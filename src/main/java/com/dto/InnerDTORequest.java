@@ -7,6 +7,9 @@ public class InnerDTORequest {
     private String username;
     private String password;
 
+    public InnerDTORequest() {
+    }
+
     public InnerDTORequest(String username, String password) {
         this.username = username;
         this.password = password;

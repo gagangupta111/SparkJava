@@ -1,12 +1,11 @@
 package com;
 
+import com.dto.InnerDTORequest;
 import com.dto.RequestDTO;
 import com.google.gson.JsonObject;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.util.JsonFormat;
+import com.mapper.SimpleMapper;
 import spark.Request;
-import spark.Response;
-import spark.Spark.*;
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
@@ -37,8 +36,9 @@ public class RequestResource {
         JsonFormatClass.parser.merge(request.body(), requestDTOBuilder);
         RequestDTO dto = requestDTOBuilder.build();
 
+        InnerDTORequest innerDTORequest = SimpleMapper.INSTANCE.sourceToDestination(dto);
+        RequestDTO requestDTO = SimpleMapper.INSTANCE.destinationToSource(innerDTORequest).build();
         // RequestDTO to InnerDTORequest
-
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("key1", "value1");
