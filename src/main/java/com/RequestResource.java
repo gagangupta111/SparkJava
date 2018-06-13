@@ -4,8 +4,14 @@ import com.dto.InnerDTORequest;
 import com.dto.RequestDTO;
 import com.google.gson.JsonObject;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.TextFormat;
 import com.mapper.SimpleMapper;
+import org.apache.http.entity.StringEntity;
 import spark.Request;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
@@ -30,15 +36,25 @@ public class RequestResource {
 
     }
 
-    public static String postObject(Request request) throws InvalidProtocolBufferException {
+    public static String postObject(Request request) {
 
-        RequestDTO.Builder requestDTOBuilder = RequestDTO.newBuilder();
-        JsonFormatClass.parser.merge(request.body(), requestDTOBuilder);
-        RequestDTO dto = requestDTOBuilder.build();
+        RequestDTO dto = null;
+        try{
 
-        InnerDTORequest innerDTORequest = SimpleMapper.INSTANCE.sourceToDestination(dto);
-        RequestDTO requestDTO = SimpleMapper.INSTANCE.destinationToSource(innerDTORequest).build();
-        // RequestDTO to InnerDTORequest
+            RequestDTO.Builder requestDTOBuilder = RequestDTO.newBuilder();
+            ByteArrayInputStream input = new ByteArrayInputStream(getDataFromFile().getBytes(StandardCharsets.US_ASCII));
+
+            RequestDTO received = RequestDTO.parseFrom(input);
+            System.out.println(received);
+
+            dto = requestDTOBuilder.mergeFrom(input).build();
+
+            InnerDTORequest innerDTORequest = SimpleMapper.INSTANCE.sourceToDestination(dto);
+            dto = SimpleMapper.INSTANCE.destinationToSource(innerDTORequest).build();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("key1", "value1");
@@ -47,6 +63,26 @@ public class RequestResource {
         jsonObject.addProperty("password", dto.getPassword());
 
         return jsonObject.toString();
+
+    }
+
+    public static String getDataFromFile() throws Exception {
+
+        BufferedReader br = null;
+        FileReader fr = null;
+        String FILENAME = "username.txt";
+        fr = new FileReader(FILENAME);
+        br = new BufferedReader(fr);
+
+        String sCurrentLine = "";
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while ((sCurrentLine = br.readLine()) != null) {
+            stringBuilder.append(sCurrentLine);
+        }
+
+        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
 
     }
 
