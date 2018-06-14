@@ -1,10 +1,15 @@
 package com.send;
 
+import com.dto.RequestDTO;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import spark.utils.IOUtils;
 
 import java.io.*;
 
@@ -12,32 +17,37 @@ public class SendBinaryData {
 
     public static void main(String[] args) throws Exception{
 
+        boolean json = false;
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httppost = new HttpPost("http://localhost:4568/post");
-
+        String url = "http://localhost:4568/post?json=";
+        // json entity
         StringEntity jsonEntity = new StringEntity("{\n" +
-                "\t\"username\":\"username\",\n" +
-                "\t\"password\":\"password\"\n" +
+                "\t\"username\":\"username99\",\n" +
+                "\t\"password\":\"password11\"\n" +
                 "}");
         jsonEntity.setContentType("application/json");
 
-        BufferedReader br = null;
-        FileReader fr = null;
-        String FILENAME = "username.txt";
-        fr = new FileReader(FILENAME);
-        br = new BufferedReader(fr);
+        File file;
+        file = new File("username.txt");
+        FileInputStream fileInputStream = new FileInputStream(file);
 
-        String sCurrentLine = "";
-        StringBuilder stringBuilder = new StringBuilder();
+        HttpEntity httpEntity = new ByteArrayEntity(IOUtils.toByteArray(fileInputStream));
 
-        while ((sCurrentLine = br.readLine()) != null) {
-            stringBuilder.append(sCurrentLine);
+        // HTTP POST IS BEING GENERATED.
+        HttpPost httpPost;
+        if (json) {
+
+            httpPost = new HttpPost(url + "true");
+            httpPost.setEntity(jsonEntity);
+
+        }else {
+
+            httpPost = new HttpPost(url + "false");
+            httpPost.setEntity(httpEntity);
+
         }
-        StringEntity binaryEntity = new StringEntity(stringBuilder.toString());
-        binaryEntity.setContentType("application/octet-stream");
 
-        httppost.setEntity(binaryEntity);
-        HttpResponse response = httpclient.execute(httppost);
+        HttpResponse response = httpclient.execute(httpPost);
         BufferedReader br1 = new BufferedReader(
                 new InputStreamReader((response.getEntity().getContent())));
 
@@ -47,6 +57,6 @@ public class SendBinaryData {
             System.out.println(output);
         }
 
-}
+    }
 
 }

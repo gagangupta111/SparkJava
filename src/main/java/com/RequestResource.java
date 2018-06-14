@@ -4,13 +4,10 @@ import com.dto.InnerDTORequest;
 import com.dto.RequestDTO;
 import com.google.gson.JsonObject;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.TextFormat;
 import com.mapper.SimpleMapper;
-import org.apache.http.entity.StringEntity;
 import spark.Request;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -31,58 +28,52 @@ public class RequestResource {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("key1", "value1");
         jsonObject.addProperty("key2", "value2");
-
         return jsonObject.toString();
 
     }
 
     public static String postObject(Request request) {
 
-        RequestDTO dto = null;
+        JsonObject jsonObject = new JsonObject();
+
         try{
 
-            RequestDTO.Builder requestDTOBuilder = RequestDTO.newBuilder();
-            ByteArrayInputStream input = new ByteArrayInputStream(getDataFromFile().getBytes(StandardCharsets.US_ASCII));
+            String json = request.queryParams("json");
+            Boolean aBoolean = new Boolean(json);
 
-            RequestDTO received = RequestDTO.parseFrom(input);
-            System.out.println(received);
+            if (aBoolean) {
 
-            dto = requestDTOBuilder.mergeFrom(input).build();
+                RequestDTO.Builder requestDTOBuilder = RequestDTO.newBuilder();
+                JsonFormatClass.parser.merge(request.body(), requestDTOBuilder);
+                RequestDTO dto = requestDTOBuilder.build();
 
-            InnerDTORequest innerDTORequest = SimpleMapper.INSTANCE.sourceToDestination(dto);
-            dto = SimpleMapper.INSTANCE.destinationToSource(innerDTORequest).build();
+                InnerDTORequest innerDTORequest = SimpleMapper.INSTANCE.sourceToDestination(dto);
+                RequestDTO requestDTO = SimpleMapper.INSTANCE.destinationToSource(innerDTORequest).build();
+                System.out.println(requestDTO);
+                // RequestDTO to InnerDTORequest
 
-        }catch (Exception e){
+
+                jsonObject.addProperty("key1", "value1");
+                jsonObject.addProperty("key2", "value2");
+                jsonObject.addProperty("user", dto.getUsername());
+                jsonObject.addProperty("password", dto.getPassword());
+
+            }else {
+
+                RequestDTO requestDTO;
+                requestDTO = RequestDTO.parseFrom(request.bodyAsBytes());
+                jsonObject.addProperty("key1", "value1");
+                jsonObject.addProperty("key2", "value2");
+                jsonObject.addProperty("user", requestDTO.getUsername());
+                jsonObject.addProperty("password", requestDTO.getPassword());
+
+            }
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
 
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("key1", "value1");
-        jsonObject.addProperty("key2", "value2");
-        jsonObject.addProperty("user", dto.getUsername());
-        jsonObject.addProperty("password", dto.getPassword());
-
         return jsonObject.toString();
-
-    }
-
-    public static String getDataFromFile() throws Exception {
-
-        BufferedReader br = null;
-        FileReader fr = null;
-        String FILENAME = "username.txt";
-        fr = new FileReader(FILENAME);
-        br = new BufferedReader(fr);
-
-        String sCurrentLine = "";
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while ((sCurrentLine = br.readLine()) != null) {
-            stringBuilder.append(sCurrentLine);
-        }
-
-        System.out.println(stringBuilder.toString());
-        return stringBuilder.toString();
 
     }
 
