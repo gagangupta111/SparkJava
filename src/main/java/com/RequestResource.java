@@ -52,7 +52,6 @@ public class RequestResource {
                 System.out.println(requestDTO);
                 // RequestDTO to InnerDTORequest
 
-
                 jsonObject.addProperty("key1", "value1");
                 jsonObject.addProperty("key2", "value2");
                 jsonObject.addProperty("user", dto.getUsername());
