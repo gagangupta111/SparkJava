@@ -31,6 +31,7 @@
             <version>0.5.1</version>
             <configuration>
                 <outputDirectory>${basedir}/gen</outputDirectory>
+                <protocExecutable>/Users/gagangupta/IntellijIdeaProjects/protoc-3.5.1-osx-x86_64/bin/protoc</protocExecutable>
             </configuration>
             <executions>
                 <execution>
