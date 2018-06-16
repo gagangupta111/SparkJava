@@ -24,6 +24,7 @@ public class SendBinaryData {
         StringEntity jsonEntity = new StringEntity("{\n" +
                 "\t\"username\":\"username99\",\n" +
                 "\t\"password\":\"password11\"\n" +
+                "\t\"id\":\"1001\"\n" +
                 "}");
         jsonEntity.setContentType("application/json");
 

@@ -26,4 +26,14 @@ public interface RequestDTOOrBuilder extends
    */
   com.google.protobuf.ByteString
       getPasswordBytes();
+
+  /**
+   * <code>string id = 3;</code>
+   */
+  java.lang.String getId();
+  /**
+   * <code>string id = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
 }

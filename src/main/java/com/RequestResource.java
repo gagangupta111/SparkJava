@@ -56,6 +56,7 @@ public class RequestResource {
                 jsonObject.addProperty("key2", "value2");
                 jsonObject.addProperty("user", dto.getUsername());
                 jsonObject.addProperty("password", dto.getPassword());
+                jsonObject.addProperty("id", dto.getId());
 
             }else {
 
@@ -65,6 +66,7 @@ public class RequestResource {
                 jsonObject.addProperty("key2", "value2");
                 jsonObject.addProperty("user", requestDTO.getUsername());
                 jsonObject.addProperty("password", requestDTO.getPassword());
+                jsonObject.addProperty("id", requestDTO.getId());
 
             }
 

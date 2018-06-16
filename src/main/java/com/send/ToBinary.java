@@ -22,6 +22,7 @@ public class ToBinary {
             RequestDTO.Builder requestDTOBuilder = RequestDTO.newBuilder();
             requestDTOBuilder.setUsername("gagan");
             requestDTOBuilder.setPassword("gupta");
+            requestDTOBuilder.setId("1001");
             RequestDTO requestDTO = requestDTOBuilder.build();
             requestDTO.writeTo(fop);
 
@@ -32,6 +33,7 @@ public class ToBinary {
         RequestDTO requestDTO1 = RequestDTO.parseFrom(fileInputStream);
         System.out.println(requestDTO1.getUsername());
         System.out.println(requestDTO1.getPassword());
+        System.out.println(requestDTO1.getId());
 
 
     }
