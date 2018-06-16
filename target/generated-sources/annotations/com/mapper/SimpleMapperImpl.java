@@ -14,7 +14,7 @@ import javax.annotation.Generated;
 
     value = "org.mapstruct.ap.MappingProcessor",
 
-    date = "2018-06-16T14:04:04+0530",
+    date = "2018-06-16T14:16:14+0530",
 
     comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_144 (Oracle Corporation)"
 
@@ -45,6 +45,11 @@ public class SimpleMapperImpl implements SimpleMapper {
             innerDTORequest.setPassword( source.getPassword() );
         }
 
+        if ( source.getId() != null ) {
+
+            innerDTORequest.setId( source.getId() );
+        }
+
         return innerDTORequest;
     }
 
@@ -67,6 +72,11 @@ public class SimpleMapperImpl implements SimpleMapper {
         if ( destination.getPassword() != null ) {
 
             builder.setPassword( destination.getPassword() );
+        }
+
+        if ( destination.getId() != null ) {
+
+            builder.setId( destination.getId() );
         }
 
         return builder;
