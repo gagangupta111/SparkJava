@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package um;
+option java_package = "com.dto";
+option java_multiple_files = true;
+
+enum Enum2 {
+    FIELD2 = 0;
+}

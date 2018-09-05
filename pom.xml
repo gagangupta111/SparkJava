@@ -31,7 +31,8 @@
             <version>0.5.1</version>
             <configuration>
                 <outputDirectory>${basedir}/gen</outputDirectory>
-                <protocExecutable>/Users/gagangupta/IntellijIdeaProjects/protoc-3.5.1-osx-x86_64/bin/protoc</protocExecutable>
+                <!-- change this path to your protoc installed directory -->
+                <protocExecutable>C:\Program Files\protoc-3.6.1-win32\bin\protoc</protocExecutable>
             </configuration>
             <executions>
                 <execution>

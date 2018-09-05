@@ -4,8 +4,6 @@ package um;
 option java_package = "com.dto";
 option java_multiple_files = true;
 
-message RequestDTO {
-    string username = 1;
-    string password = 2;
-    string id       = 3;
+enum Enum1 {
+    FIELD1 = 0;
 }
