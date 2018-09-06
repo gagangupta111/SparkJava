@@ -9,16 +9,40 @@ package com.dto;
 public enum Enum1
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>FIELD1 = 0;</code>
+   * <code>FIELD0 = 0;</code>
    */
-  FIELD1(0),
+  FIELD0(0),
+  /**
+   * <code>FIELD1 = 1;</code>
+   */
+  FIELD1(1),
+  /**
+   * <code>FIELD2 = 2;</code>
+   */
+  FIELD2(2),
+  /**
+   * <code>FIELD3 = 3;</code>
+   */
+  FIELD3(3),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>FIELD1 = 0;</code>
+   * <code>FIELD0 = 0;</code>
    */
-  public static final int FIELD1_VALUE = 0;
+  public static final int FIELD0_VALUE = 0;
+  /**
+   * <code>FIELD1 = 1;</code>
+   */
+  public static final int FIELD1_VALUE = 1;
+  /**
+   * <code>FIELD2 = 2;</code>
+   */
+  public static final int FIELD2_VALUE = 2;
+  /**
+   * <code>FIELD3 = 3;</code>
+   */
+  public static final int FIELD3_VALUE = 3;
 
 
   public final int getNumber() {
@@ -39,7 +63,10 @@ public enum Enum1
 
   public static Enum1 forNumber(int value) {
     switch (value) {
-      case 0: return FIELD1;
+      case 0: return FIELD0;
+      case 1: return FIELD1;
+      case 2: return FIELD2;
+      case 3: return FIELD3;
       default: return null;
     }
   }
