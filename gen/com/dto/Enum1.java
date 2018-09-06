@@ -9,9 +9,9 @@ package com.dto;
 public enum Enum1
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>FIELD0 = 0;</code>
+   * <code>UNKNOWN = 0;</code>
    */
-  FIELD0(0),
+  UNKNOWN(0),
   /**
    * <code>FIELD1 = 1;</code>
    */
@@ -28,9 +28,9 @@ public enum Enum1
   ;
 
   /**
-   * <code>FIELD0 = 0;</code>
+   * <code>UNKNOWN = 0;</code>
    */
-  public static final int FIELD0_VALUE = 0;
+  public static final int UNKNOWN_VALUE = 0;
   /**
    * <code>FIELD1 = 1;</code>
    */
@@ -63,7 +63,7 @@ public enum Enum1
 
   public static Enum1 forNumber(int value) {
     switch (value) {
-      case 0: return FIELD0;
+      case 0: return UNKNOWN;
       case 1: return FIELD1;
       case 2: return FIELD2;
       case 3: return FIELD3;

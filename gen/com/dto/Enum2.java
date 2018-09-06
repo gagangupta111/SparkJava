@@ -14,6 +14,11 @@ public final class Enum2 {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_um_EnumMessage_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_um_EnumMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -23,8 +28,9 @@ public final class Enum2 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024package2/Enum2.proto\022\002umB\013\n\007com.dtoP\001b" +
-      "\006proto3"
+      "\n\024package2/Enum2.proto\022\002um\"G\n\013EnumMessag" +
+      "e\"8\n\005Enum1\022\013\n\007UNKNOWN\020\000\022\n\n\006FIELD1\020\001\022\n\n\006F" +
+      "IELD2\020\002\022\n\n\006FIELD3\020\003B\013\n\007com.dtoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -38,6 +44,12 @@ public final class Enum2 {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_um_EnumMessage_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_um_EnumMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_um_EnumMessage_descriptor,
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

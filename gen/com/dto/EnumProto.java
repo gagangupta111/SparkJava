@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     username_ = "";
     password_ = "";
     id_ = "";
+    field_ = 0;
   }
 
   @java.lang.Override
@@ -61,6 +62,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             id_ = s;
+            break;
+          }
+          case 32: {
+            int rawValue = input.readEnum();
+
+            field_ = rawValue;
             break;
           }
           default: {
@@ -197,6 +204,23 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int FIELD_FIELD_NUMBER = 4;
+  private int field_;
+  /**
+   * <code>.um.EnumMessage.Enum1 field = 4;</code>
+   */
+  public int getFieldValue() {
+    return field_;
+  }
+  /**
+   * <code>.um.EnumMessage.Enum1 field = 4;</code>
+   */
+  public com.dto.EnumMessage.Enum1 getField() {
+    @SuppressWarnings("deprecation")
+    com.dto.EnumMessage.Enum1 result = com.dto.EnumMessage.Enum1.valueOf(field_);
+    return result == null ? com.dto.EnumMessage.Enum1.UNRECOGNIZED : result;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -220,6 +244,9 @@ private static final long serialVersionUID = 0L;
     if (!getIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, id_);
     }
+    if (field_ != com.dto.EnumMessage.Enum1.UNKNOWN.getNumber()) {
+      output.writeEnum(4, field_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -237,6 +264,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!getIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, id_);
+    }
+    if (field_ != com.dto.EnumMessage.Enum1.UNKNOWN.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(4, field_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -260,6 +291,7 @@ private static final long serialVersionUID = 0L;
         .equals(other.getPassword());
     result = result && getId()
         .equals(other.getId());
+    result = result && field_ == other.field_;
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -277,6 +309,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPassword().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + FIELD_FIELD_NUMBER;
+    hash = (53 * hash) + field_;
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -416,6 +450,8 @@ private static final long serialVersionUID = 0L;
 
       id_ = "";
 
+      field_ = 0;
+
       return this;
     }
 
@@ -445,6 +481,7 @@ private static final long serialVersionUID = 0L;
       result.username_ = username_;
       result.password_ = password_;
       result.id_ = id_;
+      result.field_ = field_;
       onBuilt();
       return result;
     }
@@ -504,6 +541,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         onChanged();
+      }
+      if (other.field_ != 0) {
+        setFieldValue(other.getFieldValue());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -737,6 +777,51 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       id_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int field_ = 0;
+    /**
+     * <code>.um.EnumMessage.Enum1 field = 4;</code>
+     */
+    public int getFieldValue() {
+      return field_;
+    }
+    /**
+     * <code>.um.EnumMessage.Enum1 field = 4;</code>
+     */
+    public Builder setFieldValue(int value) {
+      field_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.um.EnumMessage.Enum1 field = 4;</code>
+     */
+    public com.dto.EnumMessage.Enum1 getField() {
+      @SuppressWarnings("deprecation")
+      com.dto.EnumMessage.Enum1 result = com.dto.EnumMessage.Enum1.valueOf(field_);
+      return result == null ? com.dto.EnumMessage.Enum1.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.um.EnumMessage.Enum1 field = 4;</code>
+     */
+    public Builder setField(com.dto.EnumMessage.Enum1 value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      field_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.um.EnumMessage.Enum1 field = 4;</code>
+     */
+    public Builder clearField() {
+      
+      field_ = 0;
       onChanged();
       return this;
     }

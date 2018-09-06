@@ -23,9 +23,9 @@ public final class Enum1OuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024package1/Enum1.proto\022\002um*7\n\005Enum1\022\n\n\006F" +
-      "IELD0\020\000\022\n\n\006FIELD1\020\001\022\n\n\006FIELD2\020\002\022\n\n\006FIELD" +
-      "3\020\003B\013\n\007com.dtoP\001b\006proto3"
+      "\n\024package1/Enum1.proto\022\002um*8\n\005Enum1\022\013\n\007U" +
+      "NKNOWN\020\000\022\n\n\006FIELD1\020\001\022\n\n\006FIELD2\020\002\022\n\n\006FIEL" +
+      "D3\020\003B\013\n\007com.dtoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

@@ -4,8 +4,11 @@ package um;
 option java_package = "com.dto";
 option java_multiple_files = true;
 
+import "package2/Enum2.proto";
+
 message EnumProto {
     string username = 1;
     string password = 2;
     string id       = 3;
+    EnumMessage.Enum1 field     = 4;
 }

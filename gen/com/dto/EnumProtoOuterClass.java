@@ -28,9 +28,11 @@ public final class EnumProtoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017enumProto.proto\022\002um\";\n\tEnumProto\022\020\n\010us" +
-      "ername\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\n\n\002id\030\003 \001" +
-      "(\tB\013\n\007com.dtoP\001b\006proto3"
+      "\n\017enumProto.proto\022\002um\032\024package2/Enum2.pr" +
+      "oto\"a\n\tEnumProto\022\020\n\010username\030\001 \001(\t\022\020\n\010pa" +
+      "ssword\030\002 \001(\t\022\n\n\002id\030\003 \001(\t\022$\n\005field\030\004 \001(\0162" +
+      "\025.um.EnumMessage.Enum1B\013\n\007com.dtoP\001b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -43,13 +45,15 @@ public final class EnumProtoOuterClass {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.dto.Enum2.getDescriptor(),
         }, assigner);
     internal_static_um_EnumProto_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_um_EnumProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_um_EnumProto_descriptor,
-        new java.lang.String[] { "Username", "Password", "Id", });
+        new java.lang.String[] { "Username", "Password", "Id", "Field", });
+    com.dto.Enum2.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

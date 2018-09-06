@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2018-09-06T16:01:35+0530",
+    date = "2018-09-06T18:33:13+0530",
     comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_171 (Oracle Corporation)"
 )
 public class SimpleMapperImpl implements SimpleMapper {

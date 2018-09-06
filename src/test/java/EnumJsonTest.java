@@ -1,7 +1,6 @@
 import com.dto.Enum1;
+import com.dto.EnumMessage;
 import com.dto.EnumProto;
-import com.google.protobuf.util.JsonFormat;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 
@@ -11,14 +10,12 @@ public class EnumJsonTest {
 
         System.out.println(" Hello! ");
         EnumProto.Builder builder = EnumProto.newBuilder();
-        builder.setUsername("User1");
+        builder.setUsername("username");
         builder.setPassword("password");
         builder.setId("Id");
+        builder.setField(EnumMessage.Enum1.FIELD2);
 
-        EnumProto enumProto = builder.build();
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String json  = objectMapper.writeValueAsString(enumProto);
+        String json = com.googlecode.protobuf.format.JsonFormat.printToString(builder.build());
         System.out.println(json);
 
     }

@@ -36,4 +36,13 @@ public interface EnumProtoOrBuilder extends
    */
   com.google.protobuf.ByteString
       getIdBytes();
+
+  /**
+   * <code>.um.EnumMessage.Enum1 field = 4;</code>
+   */
+  int getFieldValue();
+  /**
+   * <code>.um.EnumMessage.Enum1 field = 4;</code>
+   */
+  com.dto.EnumMessage.Enum1 getField();
 }
